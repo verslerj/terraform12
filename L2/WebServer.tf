@@ -24,6 +24,11 @@ echo "<h2>WebServer with IP: $myip</h2><br>Build by Terraform12!"  >  /var/www/h
 sudo service httpd start
 chkconfig httpd on
 EOF
+
+tags = {
+  Name   = "Web Server built by terraform12"
+  Owner  = "Janos Versler"
+  }
 }
 
 resource "aws_security_group" "my_webserver" {
@@ -52,7 +57,7 @@ resource "aws_security_group" "my_webserver" {
   }
 
   tags = {
-    Name = "Web Server SecurityGroup"
+    Name  = "Web Server SecurityGroup"
     Owner = "Janos Versler"
   }
 }

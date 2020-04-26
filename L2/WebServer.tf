@@ -12,10 +12,10 @@ provider "aws" {
   }
 
 resource "aws_instance" "my_webserver" {
-    ami           = "ami-0323c3dd2da7fb37d"
-    instance_type = "t2.micro"
-    vpc_security_group_ids = ["aws_security_group.my_webserver.id"]
-    user_data = <<EOF
+    ami                    = "ami-0323c3dd2da7fb37d"
+    instance_type          = "t2.micro"
+    vpc_security_group_ids = [aws_security_group.my_webserver.id]
+    user_data              = <<EOF
 #!/bin/bash
 yum -y update
 yum -y install httpd

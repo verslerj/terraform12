@@ -31,7 +31,7 @@ tags = {
   }
 
 lifecycle {
-  create_before_destroy = trus
+  create_before_destroy = true
   }
 }
 

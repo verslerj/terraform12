@@ -11,6 +11,10 @@ provider "aws" {
     region        = "us-east-1"
   }
 
+  resource "aws_eip" "my_static_ip" {
+    instance = aws_instance.my_webserver.id
+
+  }
   resource "aws_instance" "my_webserver" {
       ami                    = "ami-0323c3dd2da7fb37d"
       instance_type          = "t2.micro"
@@ -18,7 +22,7 @@ provider "aws" {
       user_data              = templatefile("user_data.sh.tpl", {
         f_name = "Janos",
         l_name = "Versler",
-        names = ["John", "Donald", "Arnold", "Travis", "Denis", "Test"]
+        names = ["John", "Donald", "Arnold", "Travis", "Denis", "XYZ"]
         })
 
   tags = {
@@ -26,9 +30,6 @@ provider "aws" {
     Owner  = "Janos Versler"
     }
 
-lifecycle {
-  prevent_destroy = true
-}
 
   }
 

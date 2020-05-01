@@ -18,13 +18,18 @@ provider "aws" {
       user_data              = templatefile("user_data.sh.tpl", {
         f_name = "Janos",
         l_name = "Versler",
-        names = ["John", "Donald", "Arnold", "Travis", "Denis"]
+        names = ["John", "Donald", "Arnold", "Travis", "Denis", "Test"]
         })
 
   tags = {
     Name   = "Web Server built by terraform12"
     Owner  = "Janos Versler"
     }
+
+lifecycle {
+  prevent_destroy = true
+}
+
   }
 
 resource "aws_security_group" "my_webserver" {
